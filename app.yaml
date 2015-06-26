@@ -9,6 +9,18 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
+- url: /populate_db
+  script: tasks.app
+
+- url: /start_job
+  script: tasks.app
+
+
+# MapReduce lib - STEP 001
+- url: /mapreduce(/.*)?
+  script: mapreduce.main.APP
+  login: admin
+
 - url: .*
   script: main.app
 
