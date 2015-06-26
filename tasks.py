@@ -4,8 +4,6 @@ import logging
 from dummy import Dummy
 from mapreduce import control
 
-#STEP 003
-
 # This handler populates your Datastore with Dummy objects. You access it by going to:
 # http://yourapp.appspot.com/populate_db
 #
@@ -24,7 +22,6 @@ class PopulateHandler(webapp2.RequestHandler):
 			d.put()
 
 
-# STEP 004
 # the magic happens here
 class StartHandler(webapp2.RequestHandler):
 	def get(self):
@@ -40,7 +37,7 @@ class StartHandler(webapp2.RequestHandler):
 				"processing_rate": processing_rate,         #how many entities will each shard process
 			},
 			shard_count=shard_count,                        #how many shards will be created by every MR controller
-			queue_name="default",                           #
+			queue_name="default",                           #the name of the queue that will be used for this MR's jobs, I used default to minimize config
 		)
 
 def mapper_function(dummy):

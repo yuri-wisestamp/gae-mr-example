@@ -9,14 +9,15 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
+# task to populate the db with entities we want to iterate over
 - url: /populate_db
   script: tasks.app
 
+# task that starts the magic of mapreduce
 - url: /start_job
   script: tasks.app
 
-
-# MapReduce lib - STEP 001
+# the map reduce handler, this handles the inner calls of mapreduce
 - url: /mapreduce(/.*)?
   script: mapreduce.main.APP
   login: admin
